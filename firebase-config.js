@@ -1,11 +1,11 @@
-// firebase-config.js
+// ARQUIVO: firebase-config.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, query, where, updateDoc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// ⚠️ SUBSTITUA PELAS SUAS CHAVES DO CONSOLE FIREBASE
+// ⚠️ NÃO ESQUEÇA DE COLOCAR SUAS CHAVES DO FIREBASE AQUI
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY_AQUI",
+  apiKey: "SUA_API_KEY",
   authDomain: "SEU_PROJETO.firebaseapp.com",
   projectId: "SEU_PROJETO_ID",
   storageBucket: "SEU_PROJETO.appspot.com",
@@ -17,17 +17,15 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Função auxiliar para proteger rotas (Auth Guard)
+// Função de proteção de rotas
 function checkAuth() {
     onAuthStateChanged(auth, (user) => {
         const path = window.location.pathname;
-        if (!user && !path.includes('index.html') && !path.endsWith('/')) { 
-            // Permite index.html como login ou redireciona
-            // Ajuste conforme o nome do seu arquivo de login
-             if (!path.includes('login')) window.location.href = "index.html";
+        // Se NÃO tem usuário E não está na página de login, manda pro login
+        if (!user && !path.includes('login.html')) { 
+             window.location.href = "login.html";
         }
     });
 }
 
-// Exporta tudo que vamos usar nos outros arquivos
 export { auth, db, signInWithEmailAndPassword, signOut, onAuthStateChanged, collection, addDoc, getDocs, deleteDoc, doc, query, where, updateDoc, getDoc, setDoc, checkAuth };
