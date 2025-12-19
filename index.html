@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EBD Control - Dashboard</title>
-    <link rel="stylesheet" href="style_index.css">
+    <title>EBD Control - Login</title>
+    <link rel="stylesheet" href="style_login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,74 +13,28 @@
 </head>
 
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="sidebar-header">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
                 <i class="fa-solid fa-church"></i>
                 <h2>EBD Control</h2>
             </div>
-            <nav class="sidebar-nav">
-                <ul>
-                    <li><a href="index.html" class="active"><i class="fa-solid fa-table-columns"></i><span>Dashboard</span></a></li>
-                    <li><a href="alunos.html"><i class="fa-solid fa-users"></i><span>Alunos</span></a></li>
-                    <li><a href="frequencia.html"><i class="fa-solid fa-clipboard-user"></i><span>Frequência</span></a></li>
-                    <li><a href="revistas.html"><i class="fa-solid fa-book-bible"></i><span>Revistas</span></a></li>
-                    <li><a href="classes.html"><i class="fa-solid fa-chalkboard-user"></i><span>Classes</span></a></li>
-                    <li><a href="configuracoes.html"><i class="fa-solid fa-gear"></i><span>Configurações</span></a></li>
-                </ul>
-            </nav>
-        </aside>
-        <main class="main-content">
-            <header>
-                <div class="header-title">
-                    <h1>Dashboard</h1>
-                    <p>Bem-vindo(a) de volta, Administrador!</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" placeholder="Digite seu usuário" required>
                 </div>
-                <div class="theme-switcher">
-                    <label for="theme-toggle">Modo Escuro</label>
-                    <input type="checkbox" id="theme-toggle">
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="Digite sua senha" required>
                 </div>
-            </header>
-            <section class="dashboard-widgets">
-                <div class="widget-card">
-                    <div class="card-icon" style="background-color: #e0f2fe;"><i class="fa-solid fa-users" style="color: #0ea5e9;"></i></div>
-                    <h3>Total de Alunos</h3>
-                    <p class="stat-number">128</p>
-                    <span class="stat-change">+5 na última semana</span>
-                </div>
-                <div class="widget-card">
-                    <div class="card-icon" style="background-color: #dcfce7;"><i class="fa-solid fa-user-check" style="color: #22c55e;"></i></div>
-                    <h3>Frequência Média</h3>
-                    <p class="stat-number">87%</p>
-                    <span class="stat-change">Este mês</span>
-                </div>
-                <div class="widget-card">
-                    <div class="card-icon" style="background-color: #fef3c7;"><i class="fa-solid fa-chalkboard-user" style="color: #f59e0b;"></i></div>
-                    <h3>Classes Ativas</h3>
-                    <p class="stat-number">7</p>
-                    <span class="stat-change">Adultos, Jovens, Crianças...</span>
-                </div>
-                <div class="widget-card">
-                    <div class="card-icon" style="background-color: #fee2e2;"><i class="fa-solid fa-triangle-exclamation" style="color: #ef4444;"></i></div>
-                    <h3>Avisos Pendentes</h3>
-                    <p class="stat-number">3</p>
-                    <span class="stat-change">Verificar secretaria</span>
-                </div>
-            </section>
-            <section class="recent-activity">
-                <h2>Próximos Eventos & Atividades</h2>
-                <div class="activity-list">
-                    <div class="activity-item">
-                        <p><strong>Reunião de Professores</strong> - Planejamento do próximo trimestre.</p><span>25/09/2025</span></div>
-                    <div class="activity-item">
-                        <p><strong>Entrega da Revista nº 45</strong> - Início da nova lição.</p><span>05/10/2025</span></div>
-                    <div class="activity-item">
-                        <p><strong>Café com a Liderança</strong> - Confraternização de fim de ano.</p><span>15/12/2025</span></div>
-                </div>
-            </section>
-        </main>
+                <p id="error-message" class="error-message"></p>
+                <button type="submit" class="login-button">Entrar</button>
+            </form>
+        </div>
     </div>
-    <script src="script_index.js"></script>
+
+    <script src="script_login.js"></script>
 </body>
 
 </html>
