@@ -1,0 +1,300 @@
+/* =================================================== */
+/* ARQUIVO DE ESTILO PRINCIPAL - V2.1 (CORRIGIDO)      */
+/* =================================================== */
+
+/* --- FONTES DO GOOGLE --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* --- VARIÁVEIS DE DESIGN --- */
+:root {
+    --blue-primary: #0071e3;
+    --blue-dark: #005bb5;
+    --blue-light: #eaf5ff;
+    --accent-gold: #ffb700;
+    --text-primary: #1d1d1f;
+    --text-secondary: #5a6470;
+    --background-light: #f7f9fc;
+    --background-white: #ffffff;
+    --border-color: #e1e4e8;
+    --danger-color: #dc3545;
+    --main-gradient: linear-gradient(90deg, var(--blue-dark) 0%, var(--blue-primary) 100%);
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --main-shadow: 0 8px 24px rgba(102, 119, 136, 0.08);
+    --subtle-shadow: 0 4px 12px rgba(102, 119, 136, 0.05);
+    --main-radius: 16px;
+    --small-radius: 10px;
+}
+
+/* --- ESTILOS GLOBAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--background-light);
+    color: var(--text-primary);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+}
+
+/* --- COMPONENTES REUTILIZÁVEIS --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--main-gradient);
+    color: var(--background-white);
+    padding: 12px 24px;
+    border-radius: var(--small-radius);
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+}
+
+.card {
+    background-color: var(--background-white);
+    border-radius: var(--main-radius);
+    box-shadow: var(--subtle-shadow);
+    padding: 25px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--main-shadow);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    border: 1px solid var(--border-color);
+    border-radius: var(--small-radius);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--blue-primary);
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.15);
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--background-white);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.main-content {
+    margin-left: 260px;
+    padding: 40px;
+    width: calc(100% - 260px);
+}
+
+.main-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.main-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.page-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* --- SIDEBAR --- */
+.sidebar-header {
+    padding: 10px 0 20px 0;
+}
+
+.sidebar-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav li a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 15px;
+    margin: 5px 0;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-radius: var(--small-radius);
+    transition: all 0.3s ease;
+}
+
+.sidebar nav li a .fas {
+    font-size: 1.1rem;
+    width: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.sidebar nav li a:hover {
+    background-color: var(--blue-light);
+    color: var(--blue-dark);
+}
+
+.sidebar nav li.active a {
+    background: var(--main-gradient);
+    color: var(--background-white);
+    box-shadow: 0 4px 15px rgba(0, 113, 227, 0.2);
+}
+
+.sidebar nav li.active a .fas {
+    transform: scale(1.1);
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* --- MODAL --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--background-white);
+    border-radius: var(--main-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+/* --- RESPONSIVIDADE --- */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .main-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .main-header h1 {
+        width: 100%;
+        order: 2;
+        font-size: 2rem;
+    }
+
+    .main-header p {
+        order: 3;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 1;
+    }
+}

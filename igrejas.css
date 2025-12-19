@@ -1,0 +1,182 @@
+/* --- Grid Principal --- */
+.church-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+/* --- Card da Igreja --- */
+.church-card {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.church-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    border-color: var(--blue-primary);
+}
+
+.church-card-header {
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue-primary));
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.church-icon-large {
+    font-size: 2.5rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 10px;
+}
+
+.church-card-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.church-card h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.church-info-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.church-info-item i {
+    color: #ffb700; /* Dourado */
+    margin-top: 3px;
+    width: 16px;
+    text-align: center;
+}
+
+.card-action {
+    margin-top: auto;
+    padding-top: 15px;
+    text-align: center;
+    color: var(--blue-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Modal de Detalhes --- */
+.church-modal-content {
+    max-width: 700px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.modal-header-church {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal-logo {
+    width: 60px;
+    height: auto;
+}
+
+.modal-header-church h2 {
+    font-size: 1.5rem;
+    color: var(--blue-dark);
+    margin-bottom: 5px;
+}
+
+.modal-address {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.modal-body-church {
+    padding: 25px;
+}
+
+.detail-section {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-section h3, .detail-column h3 {
+    font-size: 1rem;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.highlight-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.details-list {
+    list-style: none;
+    padding: 0;
+}
+
+.details-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-list li:last-child {
+    border-bottom: none;
+}
+
+.details-list strong {
+    color: var(--text-primary);
+}
+
+.details-list span {
+    color: var(--text-secondary);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .details-grid {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
+        gap: 20px;
+    }
+    
+    .modal-header-church {
+        flex-direction: column;
+        text-align: center;
+    }
+}

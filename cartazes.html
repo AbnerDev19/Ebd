@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - ADEB Setor 5</title>
+    <title>Cartazes - ADEB Setor 5</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="cartazes.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
@@ -17,14 +17,14 @@
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
                 <li><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
                 <li><a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário</a></li>
                 <li><a href="igrejas.html"><i class="fas fa-church"></i> Igrejas</a></li>
                 <li><a href="documentos.html"><i class="fas fa-file-alt"></i> Documentos</a></li>
-                <li><a href="cartazes.html"><i class="fas fa-image"></i> Cartazes</a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Liderança</a></li>
-                <li><a href="#"><i class="fas fa-envelope"></i> Contato</a></li>
+                <li class="active"><a href="cartazes.html"><i class="fas fa-image"></i> Cartazes</a></li>
+                <li><a href="lideranca.html"><i class="fas fa-users"></i> Liderança</a></li>
+                <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
             </ul>
         </nav>
         <div class="sidebar-footer">
@@ -35,46 +35,32 @@
     <main class="main-content">
         <header class="main-header">
             <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
-            <h1>Painel Principal</h1>
-            <p>Visão geral das atividades e congregações do Setor 5.</p>
+            <h1>Galeria de Cartazes</h1>
+            <p>Baixe as artes oficiais para divulgação nas redes sociais e igrejas.</p>
         </header>
 
-        <section class="dashboard-highlights">
-
-            <div class="card square-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-calendar-day"></i> Próximos Eventos</h3>
-                </div>
-                <div class="card-body" id="next-events-list">
-                </div>
-            </div>
-
-            <div class="card square-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-bell"></i> Lembretes</h3>
-                </div>
-                <div class="card-body" id="reminders-list">
-                </div>
-            </div>
-
-            <div class="card full-width-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-clock"></i> Programação Semanal nas Igrejas</h3>
-                </div>
-                <div class="card-body">
-                    <div class="weekly-schedule" id="weekly-schedule-grid">
-                    </div>
-                </div>
-            </div>
-
+        <section class="gallery-controls">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="jovens">Jovens</button>
+            <button class="filter-btn" data-filter="irmas">Irmãs</button>
+            <button class="filter-btn" data-filter="missoes">Missões</button>
+            <button class="filter-btn" data-filter="setorial">Setorial</button>
         </section>
 
-        <section class="churches-section">
-            <h2 class="page-title">Nossas Igrejas</h2>
-            <div class="church-grid" id="church-grid-home">
-            </div>
+        <section class="gallery-grid" id="gallery-grid">
         </section>
     </main>
+
+    <div id="lightbox-modal" class="modal-overlay">
+        <div class="lightbox-content">
+            <button class="close-modal-btn">&times;</button>
+            <img id="lightbox-img" src="" alt="Cartaz Ampliado">
+            <div class="lightbox-footer">
+                <h3 id="lightbox-title">Título do Cartaz</h3>
+                <a id="lightbox-download" href="#" class="btn" download><i class="fas fa-download"></i> Baixar</a>
+            </div>
+        </div>
+    </div>
 
     <script type="module">
         import { auth, onAuthStateChanged, signOut } from './firebase-config.js';
@@ -97,7 +83,7 @@
             });
         }
     </script>
-    <script src="index.js"></script>
+    <script src="cartazes.js"></script>
 </body>
 
 </html>

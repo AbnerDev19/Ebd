@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - ADEB Setor 5</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contato.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>ADEB Setor 5</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
+                <li><a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário</a></li>
+                <li><a href="igrejas.html"><i class="fas fa-church"></i> Igrejas</a></li>
+                <li><a href="documentos.html"><i class="fas fa-file-alt"></i> Documentos</a></li>
+                <li><a href="cartazes.html"><i class="fas fa-image"></i> Cartazes</a></li>
+                <li><a href="lideranca.html"><i class="fas fa-users"></i> Liderança</a></li>
+                <li class="active"><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>&copy; 2025 ADEB Setor 5</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="main-header">
+            <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+            <h1>Fale Conosco</h1>
+            <p>Entre em contato com a secretaria do setor.</p>
+        </header>
+
+        <div class="contact-layout">
+            <section class="card contact-form-card">
+                <h3>Envie uma Mensagem</h3>
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label>Seu Nome</label>
+                        <input type="text" id="name" required placeholder="Ex: Pastor João">
+                    </div>
+                    <div class="form-group">
+                        <label>Assunto</label>
+                        <select id="subject">
+                            <option>Dúvida sobre Evento</option>
+                            <option>Secretaria</option>
+                            <option>Tesouraria</option>
+                            <option>Outros</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensagem</label>
+                        <textarea id="message" rows="5" required placeholder="Digite sua mensagem..."></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensagem</button>
+                </form>
+            </section>
+
+            <section class="info-column">
+                <div class="card info-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Sede do Setor 05</h3>
+                    <p>Modulo S, 3ª Av, Comércio Ofício</p>
+                    <p>Núcleo Bandeirante, Brasília - DF</p>
+                    <p>CEP: 71710-350</p>
+                </div>
+
+                <div class="card info-card">
+                    <h3><i class="fas fa-phone-alt"></i> Contatos</h3>
+                    <p><strong>Secretaria:</strong> (61) 3386-0000</p>
+                    <p><strong>Email:</strong> setor5@adeb.com.br</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script type="module">
+        import { auth, onAuthStateChanged, signOut } from './firebase-config.js';
+
+        // Verifica autenticação
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // Se não tiver usuário, manda pro login
+                window.location.href = "login.html";
+            } else {
+                // Opcional: Mostrar o email do usuário na header se quiser
+                console.log("Usuário logado:", user.email);
+            }
+        });
+
+        // Função de Logout (você precisará adicionar um botão de sair na sidebar ou header)
+        window.logout = () => {
+            signOut(auth).then(() => {
+                window.location.href = "login.html";
+            });
+        }
+    </script>
+    <script src="contato.js"></script>
+</body>
+
+</html>

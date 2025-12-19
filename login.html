@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBD Control - Login</title>
+    <link rel="stylesheet" href="style_index.css">
+    <link rel="stylesheet" href="style_login.css"> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fa-solid fa-church" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 15px;"></i>
+                <h2>Bem-vindo</h2>
+                <p>Faça login para acessar o sistema</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required placeholder="admin@igreja.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required placeholder="Sua senha">
+                </div>
+                <div id="error-message" class="error-msg"></div>
+                <button type="submit" class="primary-button full-width">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { auth, signInWithEmailAndPassword, onAuthStateChanged } from './firebase-config.js';
+
+        // Verifica se já está logado e redireciona
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                window.location.href = "index.html";
+            }
+        });
+
+        const loginForm = document.getElementById('login-form');
+        const errorMsg = document.getElementById('error-message');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const btn = e.target.querySelector('button');
+
+            try {
+                btn.textContent = "Entrando...";
+                btn.disabled = true;
+                await signInWithEmailAndPassword(auth, email, password);
+                // O onAuthStateChanged vai lidar com o redirecionamento
+            } catch (error) {
+                btn.textContent = "Entrar";
+                btn.disabled = false;
+                console.error(error);
+                // Tratamento básico de erros em PT-BR
+                if(error.code === 'auth/invalid-credential') {
+                    errorMsg.textContent = "E-mail ou senha incorretos.";
+                } else {
+                    errorMsg.textContent = "Erro ao fazer login. Tente novamente.";
+                }
+            }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+/* --- index.css: Estilos exclusivos da Dashboard --- */
+
+/* Grid Principal: 2 Colunas em cima, 1 em baixo */
+.dashboard-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Cards Quadrados (Linha de cima) */
+.square-card {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card Retangular (Ocupa as duas colunas em baixo) */
+.full-width-card {
+    grid-column: 1 / -1;
+    min-height: 200px;
+}
+
+/* Cabeçalho dos Cards */
+.card-header h3 {
+    font-size: 1.25rem;
+    color: var(--blue-primary);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-header h3 i {
+    color: #e6a800; /* Amarelo escuro */
+}
+
+/* --- Listas Internas (Eventos e Lembretes) --- */
+.dashboard-list-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.dashboard-list-item:last-child {
+    border-bottom: none;
+}
+
+.date-badge {
+    background-color: var(--blue-light);
+    color: var(--blue-dark);
+    padding: 5px 10px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 60px;
+}
+
+.date-badge .day {
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+}
+
+.date-badge .month {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.item-content h4 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.item-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* --- Estilo da Agenda Semanal (Horizontal) --- */
+.weekly-schedule {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+    text-align: center;
+}
+
+.weekday-col {
+    background-color: var(--background-light);
+    padding: 15px 10px;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.weekday-col:hover {
+    transform: translateY(-3px);
+    background-color: var(--blue-light);
+}
+
+.weekday-name {
+    font-weight: 700;
+    color: var(--blue-primary);
+    margin-bottom: 8px;
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.weekday-event {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* --- Grid de Igrejas (Visualização Rápida) --- */
+.church-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.church-display-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.church-display-card:hover {
+    box-shadow: var(--shadow);
+    border-color: var(--blue-primary);
+}
+
+/* Título da Igreja com Logo */
+.church-display-card h4 {
+    color: var(--blue-dark);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    display: flex;         /* Alinha logo e texto */
+    align-items: center;
+    gap: 10px;
+}
+
+/* Classe da Logo personalizada */
+.church-logo {
+    width: 30px;          /* Ajuste o tamanho conforme necessário */
+    height: auto;
+    object-fit: contain;
+}
+
+.church-display-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.church-display-card i {
+    margin-top: 3px;
+    color: #e6a800;
+    width: 15px;
+}
+
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+    .dashboard-highlights {
+        grid-template-columns: 1fr;
+    }
+    
+    .full-width-card {
+        grid-column: 1;
+    }
+    
+    .weekly-schedule {
+        grid-template-columns: 1fr 1fr;
+    }
+}

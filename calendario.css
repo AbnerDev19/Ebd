@@ -1,0 +1,187 @@
+/* --- Layout da Página --- */
+.calendar-top-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Calendário maior que a lista */
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+/* --- Card Esquerda: Calendário --- */
+.calendar-card {
+    padding: 25px;
+    min-height: 400px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h3 {
+    font-size: 1.4rem;
+    color: var(--blue-dark);
+    text-transform: capitalize;
+}
+
+.calendar-header button {
+    background: var(--blue-light);
+    border: none;
+    color: var(--blue-primary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.calendar-header button:hover {
+    background: #d0e8ff;
+}
+
+.calendar-weekdays, .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 8px;
+}
+
+.calendar-weekdays div {
+    font-weight: 700;
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.calendar-days div {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px; /* Quadrado arredondado moderno */
+    font-weight: 500;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.calendar-days div:hover:not(.empty) {
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+}
+
+.calendar-days .today {
+    background-color: var(--blue-primary) !important;
+    color: #fff !important;
+}
+
+/* Bolinhas indicadoras de evento */
+.calendar-days .event-dot {
+    position: absolute;
+    bottom: 5px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+.dot-local { background-color: #28a745; } /* Verde para Local */
+.dot-setorial { background-color: #ffb700; } /* Dourado para Setorial */
+
+.calendar-days .empty {
+    cursor: default;
+}
+
+/* --- Card Direita: Próximos Eventos --- */
+.upcoming-card {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header-simple h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-header-simple i {
+    color: #ffb700;
+}
+
+.upcoming-list {
+    list-style: none;
+    overflow-y: auto;
+    max-height: 340px; /* Scroll se tiver muitos */
+    padding-right: 5px;
+}
+
+.upcoming-item {
+    background: #f9f9f9;
+    border-left: 4px solid #ccc;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    transition: transform 0.2s;
+}
+
+.upcoming-item:hover {
+    transform: translateX(5px);
+}
+
+.upcoming-item.type-setorial { border-left-color: #ffb700; }
+.upcoming-item.type-local { border-left-color: #28a745; }
+
+.upcoming-date {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.upcoming-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    display: block;
+}
+
+.upcoming-loc {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* --- Card Inferior: Adicionar Evento --- */
+.add-event-card {
+    padding: 25px;
+}
+
+.inline-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: end; /* Alinha o botão com os inputs */
+}
+
+.button-group button {
+    width: 100%;
+    height: 42px; /* Altura para alinhar com inputs */
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .calendar-top-grid {
+        grid-template-columns: 1fr; /* Empilha no mobile */
+    }
+    
+    .inline-form {
+        grid-template-columns: 1fr; /* Form vira vertical no mobile */
+    }
+}

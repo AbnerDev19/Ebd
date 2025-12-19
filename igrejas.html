@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - ADEB Setor 5</title>
+    <title>Igrejas - ADEB Setor 5</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="igrejas.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
@@ -17,10 +17,10 @@
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
                 <li><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
                 <li><a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário</a></li>
-                <li><a href="igrejas.html"><i class="fas fa-church"></i> Igrejas</a></li>
+                <li class="active"><a href="igrejas.html"><i class="fas fa-church"></i> Igrejas</a></li>
                 <li><a href="documentos.html"><i class="fas fa-file-alt"></i> Documentos</a></li>
                 <li><a href="cartazes.html"><i class="fas fa-image"></i> Cartazes</a></li>
                 <li><a href="#"><i class="fas fa-users"></i> Liderança</a></li>
@@ -35,46 +35,48 @@
     <main class="main-content">
         <header class="main-header">
             <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
-            <h1>Painel Principal</h1>
-            <p>Visão geral das atividades e congregações do Setor 5.</p>
+            <h1>Congregações</h1>
+            <p>Conheça nossas igrejas, pastores e horários de culto.</p>
         </header>
 
-        <section class="dashboard-highlights">
+        <section class="church-grid-container" id="church-grid">
+        </section>
+    </main>
 
-            <div class="card square-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-calendar-day"></i> Próximos Eventos</h3>
-                </div>
-                <div class="card-body" id="next-events-list">
+    <div id="church-modal" class="modal-overlay">
+        <div class="modal-content church-modal-content">
+            <button class="close-modal-btn">&times;</button>
+
+            <div class="modal-header-church">
+                <img src="fotos/logo.png" alt="Logo" class="modal-logo">
+                <div>
+                    <h2 id="modal-church-name">Nome da Igreja</h2>
+                    <p id="modal-church-address" class="modal-address">Endereço aqui</p>
                 </div>
             </div>
 
-            <div class="card square-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-bell"></i> Lembretes</h3>
+            <div class="modal-body-church">
+                <div class="detail-section">
+                    <h3><i class="fas fa-user-tie"></i> Pastor Responsável</h3>
+                    <p id="modal-church-pastor" class="highlight-text">Pr. Nome do Pastor</p>
                 </div>
-                <div class="card-body" id="reminders-list">
-                </div>
-            </div>
 
-            <div class="card full-width-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-clock"></i> Programação Semanal nas Igrejas</h3>
-                </div>
-                <div class="card-body">
-                    <div class="weekly-schedule" id="weekly-schedule-grid">
+                <div class="details-grid">
+                    <div class="detail-column">
+                        <h3><i class="fas fa-users"></i> Liderança Local</h3>
+                        <ul id="modal-leaders-list" class="details-list">
+                        </ul>
+                    </div>
+
+                    <div class="detail-column">
+                        <h3><i class="fas fa-clock"></i> Dias de Culto & Festas</h3>
+                        <ul id="modal-schedule-list" class="details-list">
+                        </ul>
                     </div>
                 </div>
             </div>
-
-        </section>
-
-        <section class="churches-section">
-            <h2 class="page-title">Nossas Igrejas</h2>
-            <div class="church-grid" id="church-grid-home">
-            </div>
-        </section>
-    </main>
+        </div>
+    </div>
 
     <script type="module">
         import { auth, onAuthStateChanged, signOut } from './firebase-config.js';
@@ -97,7 +99,7 @@
             });
         }
     </script>
-    <script src="index.js"></script>
+    <script src="igrejas.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos - ADEB Setor 5</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="documentos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>ADEB Setor 5</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
+                <li><a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário</a></li>
+                <li><a href="igrejas.html"><i class="fas fa-church"></i> Igrejas</a></li>
+                <li class="active"><a href="documentos.html"><i class="fas fa-file-alt"></i> Documentos</a></li>
+                <li><a href="cartazes.html"><i class="fas fa-image"></i> Cartazes</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Liderança</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Contato</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>&copy; 2025 ADEB Setor 5</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="main-header">
+            <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
+            <h1>Documentos e Arquivos</h1>
+            <p>Organize atas, relatórios e circulares em pastas.</p>
+        </header>
+
+        <section class="folders-section">
+            <h3 class="section-title"><i class="fas fa-folder-open"></i> Pastas do Setor</h3>
+            <div id="folders-grid" class="folders-grid">
+            </div>
+        </section>
+
+        <section class="files-section card">
+            <div class="files-header">
+                <div class="current-folder-info">
+                    <h3 id="current-folder-title">Todos os Documentos</h3>
+                    <span id="file-count-badge">0 arquivos</span>
+                </div>
+                <div class="files-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Buscar arquivo...">
+                    </div>
+                    <button id="add-document-btn" class="btn"><i class="fas fa-cloud-upload-alt"></i> Novo
+                        Arquivo</button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome do Arquivo</th>
+                            <th>Categoria</th>
+                            <th>Data de Envio</th>
+                            <th>Tamanho</th>
+                            <th style="text-align: right;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="documents-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="document-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal-btn">&times;</button>
+            <h3 id="modal-title">Adicionar Novo Documento</h3>
+
+            <form id="document-form">
+                <input type="hidden" id="document-id">
+
+                <div class="form-group">
+                    <label>Nome do Documento</label>
+                    <input type="text" id="document-name" placeholder="Ex: Ata Reunião Jan/2025" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Selecione a Pasta (Categoria)</label>
+                    <select id="document-category" required>
+                        <option value="Atas de Reunião">Atas de Reunião</option>
+                        <option value="Relatórios Financeiros">Relatórios Financeiros</option>
+                        <option value="Circulares">Circulares</option>
+                        <option value="Eventos">Eventos e Cartazes</option>
+                        <option value="Outros">Outros Documentos</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Arquivo</label>
+                    <div class="file-drop-area">
+                        <i class="fas fa-file-import"></i>
+                        <p id="file-label">Clique para selecionar um arquivo</p>
+                        <input type="file" id="document-file-input" class="file-input">
+                        <small id="file-name-display"></small>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Salvar Documento</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { auth, onAuthStateChanged, signOut } from './firebase-config.js';
+
+        // Verifica autenticação
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // Se não tiver usuário, manda pro login
+                window.location.href = "login.html";
+            } else {
+                // Opcional: Mostrar o email do usuário na header se quiser
+                console.log("Usuário logado:", user.email);
+            }
+        });
+
+        // Função de Logout (você precisará adicionar um botão de sair na sidebar ou header)
+        window.logout = () => {
+            signOut(auth).then(() => {
+                window.location.href = "login.html";
+            });
+        }
+    </script>
+    <script src="documentos.js"></script>
+</body>
+
+</html>

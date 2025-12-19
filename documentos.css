@@ -1,0 +1,255 @@
+/* --- Layout Geral --- */
+.section-title {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Grid de Pastas --- */
+.folders-section {
+    margin-bottom: 30px;
+}
+
+.folders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.folder-card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.folder-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-color: var(--blue-primary);
+}
+
+.folder-card.active {
+    background-color: #eaf5ff; /* Azul claro para pasta ativa */
+    border-color: var(--blue-primary);
+}
+
+/* Ícone da Pasta */
+.folder-icon {
+    font-size: 2.2rem;
+    color: #ffb700; /* Amarelo Pasta */
+    flex-shrink: 0;
+}
+
+.folder-info {
+    flex-grow: 1;
+}
+
+.folder-info h4 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.folder-info p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* --- Seção de Arquivos (Tabela) --- */
+.files-section {
+    padding: 0; /* O padding será interno nos elementos */
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.files-header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: #fcfcfc;
+}
+
+.current-folder-info h3 {
+    font-size: 1.3rem;
+    color: var(--blue-dark);
+    margin-bottom: 5px;
+}
+
+#file-count-badge {
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.files-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.search-box input {
+    padding: 10px 10px 10px 35px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 250px;
+    font-family: var(--font-body);
+}
+
+/* Tabela de Arquivos */
+.table-container {
+    padding: 0;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead th {
+    background-color: #fafafa;
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+}
+
+table tbody tr {
+    transition: background 0.1s;
+}
+
+table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+table tbody td {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* Ícones de tipo de arquivo na tabela */
+.file-icon-cell i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+}
+
+.fa-file-pdf { color: #e53935; }
+.fa-file-word { color: #1e88e5; }
+.fa-file-excel { color: #43a047; }
+.fa-file-image { color: #fb8c00; }
+.fa-file-alt { color: #757575; }
+
+/* Botões de Ação na Tabela */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: #fff;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background-color: var(--blue-light);
+    color: var(--blue-primary);
+    border-color: var(--blue-primary);
+}
+
+.delete-btn:hover {
+    background-color: #fff0f0;
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Upload Area no Modal */
+.file-drop-area {
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background: #fafafa;
+}
+
+.file-drop-area:hover {
+    border-color: var(--blue-primary);
+    background: #f0f7ff;
+}
+
+.file-drop-area i {
+    font-size: 2rem;
+    color: var(--blue-primary);
+    margin-bottom: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .files-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .files-actions {
+        flex-direction: column;
+    }
+    
+    .search-box input {
+        width: 100%;
+    }
+    
+    .folders-grid {
+        grid-template-columns: 1fr 1fr; /* 2 por linha no mobile */
+    }
+}

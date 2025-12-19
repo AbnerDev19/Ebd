@@ -1,101 +1,48 @@
-/* Estilo para a Página de Login */
-
-:root {
-    --bg-color: #f4f7fa;
-    --card-bg: #ffffff;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --accent-color: #3b82f6;
-    --border-color: #e2e8f0;
-    --danger-color: #ef4444;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
+/* Herda as variáveis do style_index.css */
 body {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    background-color: var(--bg-color);
 }
 
 .login-container {
+    width: 100%;
     padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-.login-box {
+.login-card {
     background-color: var(--card-bg);
     padding: 40px;
     border-radius: 16px;
-    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 25px var(--shadow-color);
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 4px 12px rgba(149, 157, 165, 0.1);
+    text-align: center;
 }
 
 .login-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
     margin-bottom: 30px;
-    font-size: 1.4rem;
 }
 
-.login-header .fa-church {
-    color: var(--accent-color);
+.full-width {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    height: 48px;
+}
+
+.error-msg {
+    color: #ef4444; /* Vermelho para erro */
+    font-size: 0.9rem;
+    margin-top: 10px;
+    min-height: 20px;
 }
 
 .form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-
-.form-group input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    font-size: 1rem;
-}
-
-.login-button {
-    background-color: var(--accent-color);
-    color: #fff;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 10px;
-    transition: background-color 0.2s;
-}
-
-.login-button:hover {
-    background-color: #2563eb;
-}
-
-.error-message {
-    color: var(--danger-color);
-    font-size: 0.9rem;
-    text-align: center;
-    margin-top: 15px;
-    display: none; /* Começa escondido */
+    text-align: left;
+    margin-bottom: 15px;
 }

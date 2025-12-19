@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - ADEB Setor 5</title>
+    <title>Liderança - ADEB Setor 5</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="lideranca.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
@@ -17,14 +17,14 @@
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Início</a></li>
                 <li><a href="festividades.html"><i class="fas fa-star"></i> Festividades</a></li>
                 <li><a href="calendario.html"><i class="fas fa-calendar-alt"></i> Calendário</a></li>
                 <li><a href="igrejas.html"><i class="fas fa-church"></i> Igrejas</a></li>
                 <li><a href="documentos.html"><i class="fas fa-file-alt"></i> Documentos</a></li>
                 <li><a href="cartazes.html"><i class="fas fa-image"></i> Cartazes</a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Liderança</a></li>
-                <li><a href="#"><i class="fas fa-envelope"></i> Contato</a></li>
+                <li class="active"><a href="lideranca.html"><i class="fas fa-users"></i> Liderança</a></li>
+                <li><a href="contato.html"><i class="fas fa-envelope"></i> Contato</a></li>
             </ul>
         </nav>
         <div class="sidebar-footer">
@@ -35,44 +35,16 @@
     <main class="main-content">
         <header class="main-header">
             <button id="menu-toggle" class="menu-toggle"><i class="fas fa-bars"></i></button>
-            <h1>Painel Principal</h1>
-            <p>Visão geral das atividades e congregações do Setor 5.</p>
+            <h1>Liderança do Setor</h1>
+            <p>Conheça os coordenadores e responsáveis pelos departamentos.</p>
         </header>
 
-        <section class="dashboard-highlights">
+        <section class="leadership-section">
+            <h2 class="section-divider"><i class="fas fa-crown"></i> Coordenação Geral</h2>
+            <div id="coordination-grid" class="leader-grid"></div>
 
-            <div class="card square-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-calendar-day"></i> Próximos Eventos</h3>
-                </div>
-                <div class="card-body" id="next-events-list">
-                </div>
-            </div>
-
-            <div class="card square-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-bell"></i> Lembretes</h3>
-                </div>
-                <div class="card-body" id="reminders-list">
-                </div>
-            </div>
-
-            <div class="card full-width-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-clock"></i> Programação Semanal nas Igrejas</h3>
-                </div>
-                <div class="card-body">
-                    <div class="weekly-schedule" id="weekly-schedule-grid">
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <section class="churches-section">
-            <h2 class="page-title">Nossas Igrejas</h2>
-            <div class="church-grid" id="church-grid-home">
-            </div>
+            <h2 class="section-divider"><i class="fas fa-users-cog"></i> Líderes de Departamento</h2>
+            <div id="departments-grid" class="leader-grid"></div>
         </section>
     </main>
 
@@ -97,7 +69,7 @@
             });
         }
     </script>
-    <script src="index.js"></script>
+    <script src="lideranca.js"></script>
 </body>
 
 </html>
